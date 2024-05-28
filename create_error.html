@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <?php
+  session_start();
+  $con = mysqli_connect("localhost","myblog","12345","myblog");
+  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+      echo "Welcome to the member's area, " . htmlspecialchars($_SESSION['username']) . "!";
+  } else {
+      header("Location: login.html");
+          exit;
+  }
+  // Check connection
+  if (mysqli_connect_errno()) {
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      exit;
+  }
+  else { echo "Connection success";}
+
+  ?>
+<head>
+  <meta charset="utf-8">
+  <title>blog</title>
+  <meta charset="utf-8">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">blog</a>
+      </div>
+  
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li id="home"><a href="main.html">HOME</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h1>Title or text must contain at least one character</h1>
+  <h1>Create</h1>
+    <form class="" action="create.php" method="post">
+      <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" name="post_title">
+        <label>Post</label>
+        <textarea class="form-control" name="post_text" rows="5" cols="30"></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit" name="button">Publish</button>
+    </form>
+
+  <div class="footer-padding"></div>
+  <div class="footer">
+    <p>dogantolgatorun,ayteksangun,duruturkaslan</p>
+  </div>
+</div>
+  <body>
+    <div class="container">
